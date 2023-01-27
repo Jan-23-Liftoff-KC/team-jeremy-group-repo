@@ -5,6 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Objects;
 
 @MappedSuperclass
 public abstract class AbstractBaseClass {
@@ -14,20 +15,15 @@ public abstract class AbstractBaseClass {
     private int id;
 
     // to check if names are identical, we need to use a Derived Query Method
-    @NotBlank(message="Please provide a name for this.")
-    @Size(min= 3, max = 100, message = "Name must be between 3 and 100 characters.")
-    private String name;
-
-    boolean existsAbstractBaseClassByName(String model);
+//    @NotBlank(message="Please provide a name for this.")
+//    @Size(min= 3, max = 100, message = "Name must be between 3 and 100 characters.")
+//    private String name;
 
 
     public int getId() {
         return id;
     }
 
-
-
-    // this thing makes sure that the ID is good to go.
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -36,7 +32,10 @@ public abstract class AbstractBaseClass {
         return id == that.id;
     }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
 
 }
