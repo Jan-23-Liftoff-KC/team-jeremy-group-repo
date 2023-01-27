@@ -19,6 +19,17 @@ public class CategoryListController {
     @Autowired
     RecordsRepository RecordsRepository;
 
+    Static HashMap<String, String> columnChoices = new HashMap<>();
+
+    public CategoryListController() {
+
+        columnChoices.put("all", "All");
+        columnChoices.put("records", "Records");
+        columnChoices.put("users", "Users");
+    }
+
+
+
     
 
     // this thing should render a table showing all the categories that are created
