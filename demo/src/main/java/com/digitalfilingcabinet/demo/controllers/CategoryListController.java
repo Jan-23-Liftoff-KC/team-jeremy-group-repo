@@ -3,6 +3,9 @@ package com.digitalfilingcabinet.demo.controllers;
 import com.digitalfilingcabinet.demo.models.data.CategoryListRepository;
 import com.digitalfilingcabinet.demo.models.data.RecordsRepository;
 import com.digitalfilingcabinet.demo.models.data.UserListRepository;
+
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +22,7 @@ public class CategoryListController {
     @Autowired
     RecordsRepository RecordsRepository;
 
-    Static HashMap<String, String> columnChoices = new HashMap<>();
+    static HashMap<String, String> columnChoices = new HashMap<>();
 
     public CategoryListController() {
 
@@ -30,7 +33,7 @@ public class CategoryListController {
 
 
 
-    
+
 
     // this thing should render a table showing all the categories that are created
     // can we get this thing to like, also show a thumbnail of the category
