@@ -31,6 +31,14 @@ public class CategoryListController {
         columnChoices.put("users", "Users");
     }
 
+    @RequestMapping("")
+    public String CategoryList(Model model){
+        model.addAttribute("categoryList", categoryRepository.findAll());
+        model. addAttribute("records", recordRepository.findAll());
+        return "categoryList";
+    }
+
+
 
 
 
