@@ -14,15 +14,22 @@ public abstract class AbstractBaseClass {
     @GeneratedValue
     private int id;
 
+    @Column(unique = true)
+    @NotBlank(message="Please provide a name for this.")
+    @Size(min= 3, max = 100, message = "Name must be between 3 and 100 characters.")
+    private String name;
+
+
     // to check if names are identical, we need to use a Derived Query Method
-//    @NotBlank(message="Please provide a name for this.")
-//    @Size(min= 3, max = 100, message = "Name must be between 3 and 100 characters.")
-//    private String name;
+
+
 
 
     public int getId() {
         return id;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
