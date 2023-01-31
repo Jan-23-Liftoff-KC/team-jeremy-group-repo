@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:/>/www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container  body-content">
+<h1>Add User</h1>
+<nav th:replace="fragments :: page-header"></nav>
+
+<h1>Add User</h1>
+
+<form method="post" style="max-width:600px;">
+    <div class="form-group">
+        <ul>
+            <li>
+                <label th:for="name">User First Name</label>
+                <input class="form-control" th:field="${user.first_name}" />
+                <span th:errors="${user.first_name}" class="error"></span>
+            </li>
+            <li>
+                <label th:for="name">User Last Name</label>
+                <input class="form-control" th:field="${user.last_name}" />
+                <span th:errors="${user.last_name}" class="error"></span>
+            </li>
+            <li>
+                <label th:for="email">User Email</label>
+                <input class="form-control" th:field="${user.email}" />
+                <span th:errors="${user.email}" class="error"></span>
+            </li>
+            <li>
+                <label th:for="phone">User Phone Number</label>
+                <input class="form-control" th:field="${user.phone}" />
+                <span th:errors="${user.phone}" class="error"></span>
+            </li>
+    </div>
+
+    <div class="form-group">
+        <label th:for="relationships">User Relationships & Responsibilities</label>
+        <th:block th:each="relationship: ${relationships}">
+            <input type="checkbox" name="relationships" th:value="${relationship.id}">
+            <label th:text="${relationship.name}"></label>
+        </th:block>
+        <a th:href="@{'/skills/add'}">Add Relationships & Responsibilities</a>
+    </div>
+
+
+    <div class="form-group">
+               <label th:for="role">Role</label>
+                <th:block th:each="role: ${roles}"></th:block>
+                <input type="radio" id="admin" name="roles" value="Admin">
+                <label th:for="admin">Admin</label><br>
+                <input type="radio" id="editor" name="roles" value="Editor">
+                <label for="editor">Editor</label><br>
+                <input type="radio" id="viewer" name="roles" value="Viewer">
+                <label for="viewer">Viewer</label>
+
+            <a th:href="@{'/role/add'}">Add Role</a>
+    </div>
+
+    <input type="submit" value="Add User" />
+</form>
+
+</body>
+</html>
