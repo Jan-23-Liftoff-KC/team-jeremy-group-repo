@@ -6,7 +6,7 @@ import java.util.List;
 @Entity
 public class UserList extends AbstractBaseClass {
 
-
+//I believe we need to code this similarly to how we did for JobData in assignment 4
 
 
     // we should be able to use this Derived Query Method to check if the 'name'

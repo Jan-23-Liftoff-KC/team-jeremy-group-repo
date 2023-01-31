@@ -6,19 +6,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table
+@Table //should this be a table or list?  How do we have several unique keys if it is in a list?
 public class User extends AbstractBaseClass {
 //not sure whether to use @Column(nullable-false) or @NotNull
 
-    @Column
+
     @ManyToOne
     private Role role;
-    public User() {};
+
 
     public User (Role role) {
         super();
         this.role = role;
     }
+
 
    @Column(nullable = false, unique = true, length = 45)
     private String email;
@@ -32,6 +33,28 @@ public class User extends AbstractBaseClass {
     @Column(name = "last_name", nullable = false, length = 20)
     private String lastName;
 
+    @Column(name = "phone_number", nullable = false, length = 10)
+    private Integer phoneNumber;
+
+    public User (String firstName, String lastName, Integer phoneNumber, String email, String password, Role role ) {
+        super();
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.role = role;
+
+
+    }
+
+    public Integer getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(Integer phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public String getEmail() {
         return email;
