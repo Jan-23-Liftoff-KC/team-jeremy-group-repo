@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container  body-content">
+<h1 th:text="${'User: ' + user.name}">Default Title</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div>
+    <p th:text="${'ID: ' + user.id}"></p>
+    <p th:text="${'First Name: ' + user.first_name}"></p>
+    <p th:text="${'Last Name: ' + user.last_name}"></p>
+    <p th:text="${'Phone: ' + user.phone}"></p>
+    <p th:text="${'Email: ' + user.email}"></p>
+
+
+    <p>
+        Relationship: <a th:href="@{'/relationships/view/' + ${relationship.user.id}}" th:text="${relationship.user.name}"></a>
+    </p>
+
+    <p>
+        Role: <a th:href="@{'/role/view/' + ${role.user.id}}" th:text="${role.user.name}"></a>
+    </p>
+</div>
+
+
+</body>
+</html>
