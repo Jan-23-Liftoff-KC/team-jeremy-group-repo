@@ -16,7 +16,4 @@ public class Role extends AbstractBaseClass {
 
     public Role(){}
 
-
-
-
 }
