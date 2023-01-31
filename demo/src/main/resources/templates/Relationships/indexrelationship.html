@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<p th:unless="${relationships} and ${relationships.size()}">no relationships!</p>
+
+<div class="container body-content">
+    <h2>Relationship</h2>
+    <ul>
+        <li th:each="relationship : ${relationships}">
+            <a th:href="@{'/relationships/view/' + ${relationship.id}}" th:text="${relationship.name}"></a>
+        </li>
+
+    </ul>
+    <a th:href="@{'/relationships/add'}">Add Relationships</a>
+
+</div>
+
+</body>
+</html>
