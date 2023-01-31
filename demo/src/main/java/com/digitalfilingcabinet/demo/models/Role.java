@@ -14,6 +14,9 @@ public class Role extends AbstractBaseClass {
     @JoinColumn(name = "role_id")
     private final List<User> users = new ArrayList<>();
 
-    public Role(){}
+    public Role(){
+        super();
+    }
+
 
 }
