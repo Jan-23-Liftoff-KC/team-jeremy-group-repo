@@ -6,18 +6,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table
 public class User extends AbstractBaseClass {
 //not sure whether to use @Column(nullable-false) or @NotNull
 
+    @Column
     @ManyToOne
     private Role role;
-
     public User() {};
 
     public User (Role role) {
         super();
         this.role = role;
     }
+
    @Column(nullable = false, unique = true, length = 45)
     private String email;
 
@@ -30,9 +32,6 @@ public class User extends AbstractBaseClass {
     @Column(name = "last_name", nullable = false, length = 20)
     private String lastName;
 
-
-
-    private Set<Role> roles = new HashSet<>();
 
     public String getEmail() {
         return email;
@@ -73,6 +72,7 @@ public class User extends AbstractBaseClass {
     public Set<Role> getRoles() {
         return roles;
     }
+    private Set<Role> roles = new HashSet<>();
 
 
 }
