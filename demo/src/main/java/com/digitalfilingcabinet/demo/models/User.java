@@ -1,10 +1,9 @@
 package com.digitalfilingcabinet.demo.models;
 
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-
-import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
