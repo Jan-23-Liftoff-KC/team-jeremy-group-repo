@@ -6,11 +6,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
 public class User extends AbstractBaseClass {
 //not sure whether to use @Column(nullable-false) or @NotNull
 
-    @Column(nullable = false, unique = true, length = 45)
+    @ManyToOne
+    private Role role;
+
+    public User() {};
+
+    public User (Role role) {
+        super();
+        this.role = role;
+    }
+   @Column(nullable = false, unique = true, length = 45)
     private String email;
 
     @Column(nullable = false, length = 64)
@@ -22,12 +30,7 @@ public class User extends AbstractBaseClass {
     @Column(name = "last_name", nullable = false, length = 20)
     private String lastName;
 
-    @ManyToMany
-        @JoinTable(
-                name = "users_roles",
-                joinColumns = @JoinColumn(name = "user_id"),
-                inverseJoinColumns = @JoinColumn(name = "role_id")
-        )
+
 
     private Set<Role> roles = new HashSet<>();
 

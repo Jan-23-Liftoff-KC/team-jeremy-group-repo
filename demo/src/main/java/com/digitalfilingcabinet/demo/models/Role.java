@@ -1,31 +1,22 @@
 package com.digitalfilingcabinet.demo.models;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "roles")
+
 public class Role extends AbstractBaseClass {
-    @Column(nullable = false, length = 45)
-    private String name;
 
-    public Role (){}
+    @OneToMany
+    @JoinColumn(name = "role_id")
+    private final List<User> users = new ArrayList<>();
 
-    public Role(String name) {
-        this.name = name;
-    }
+    public Role(){}
 
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-        public String toString(){
-        return this.name;
-        }
 
 }
