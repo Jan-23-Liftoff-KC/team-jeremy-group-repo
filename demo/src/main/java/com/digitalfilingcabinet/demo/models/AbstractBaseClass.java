@@ -1,13 +1,13 @@
 package com.digitalfilingcabinet.demo.models;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @MappedSuperclass
+@Entity
+@Table
 public abstract class AbstractBaseClass {
 
     @Id
@@ -22,13 +22,22 @@ public abstract class AbstractBaseClass {
 
     // to check if names are identical, we need to use a Derived Query Method
 
-
-
-
     public int getId() {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 
 
     @Override
