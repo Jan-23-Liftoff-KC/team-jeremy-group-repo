@@ -10,14 +10,19 @@ import java.util.Set;
 public class User extends AbstractBaseClass {
 //not sure whether to use @Column(nullable-false) or @NotNull
 
-
+//role grants permissions as an Admin, Editor, or Viewer
     @ManyToOne
     private Role role;
 
+    //relationship could be son, power of attorney, executor of estate, emergency contact, and...
+    @ManytoMany
+    private Relationship relationship;
 
-    public User (Role role) {
+
+    public User (Role role, Relationship relationship) {
         super();
         this.role = role;
+        this.relationship = relationship;
     }
 
 
@@ -33,10 +38,12 @@ public class User extends AbstractBaseClass {
     @Column(name = "last_name", nullable = false, length = 20)
     private String lastName;
 
-    @Column(name = "phone_number", nullable = false, length = 10)
+    @Column(name = "phone", nullable = false, length = 10)
     private Integer phoneNumber;
 
-    public User (String firstName, String lastName, Integer phoneNumber, String email, String password, Role role ) {
+    @Column(name = "relationship", nullable = false, )
+
+    public User (String firstName, String lastName, Integer phoneNumber, String email, String password, Role role, Relationship relationship) {
         super();
         this.email = email;
         this.password = password;
@@ -44,6 +51,7 @@ public class User extends AbstractBaseClass {
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.role = role;
+        this.relationship = relationship;
 
 
     }
