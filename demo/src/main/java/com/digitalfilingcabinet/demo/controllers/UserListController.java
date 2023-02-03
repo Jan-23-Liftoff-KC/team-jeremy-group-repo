@@ -25,6 +25,9 @@ public class UserListController {
   @Autowired
    private RoleListRepository roleListRepository;
 
+  @Autowired
+  private RelationshipRepository relationshipRepository;
+
     @GetMapping("")
     public String index(Model model) {
 
