@@ -14,6 +14,8 @@ public abstract class AbstractBaseClass {
     @GeneratedValue
     private int id;
 
+    //should name be at the abstract class or just on the user, relationship, and categorydata classes?
+
     @Column(unique = true)
     @NotBlank(message="Please provide a name for this.")
     @Size(min= 3, max = 100, message = "Name must be between 3 and 100 characters.")

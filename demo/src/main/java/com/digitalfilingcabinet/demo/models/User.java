@@ -1,7 +1,10 @@
 package com.digitalfilingcabinet.demo.models;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 import javax.persistence.*;
+import javax.validation.contraints.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,9 +22,13 @@ public class User extends AbstractBaseClass {
     @ManytoMany
     private List<Relationship> relationships;
 
-    public User(){};
 
 
+    @NotNull
+    private String username;
+
+    @NotNull
+    private String pwHash;
 
 
    //@Column(nullable = false, unique = true, length = 45)
@@ -29,8 +36,6 @@ public class User extends AbstractBaseClass {
     private String email;
 
     //@Column(nullable = false, length = 64)
-    @NotBlank
-    private String password;
 
    // @Column(name = "first_name", nullable = false, length = 20)
     @NotBlank
@@ -46,10 +51,13 @@ public class User extends AbstractBaseClass {
 
    // @Column(name = "relationship", nullable = false, )
 
-    public User (String firstName, String lastName, Integer phoneNumber, String email, String password, Role role, List <Relationship> relationships) {
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    public User(){};
+    public User (String username, String password, String firstName, String lastName, Integer phoneNumber, String email, String password, Role role, List <Relationship> relationships) {
         super();
+        this.username = username;
+        this.pwHash = encoder.encode(password);
         this.email = email;
-        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -57,8 +65,15 @@ public class User extends AbstractBaseClass {
         this.relationships = relationships;
 
 
+
+    }
+    public String getUsername() {
+        return username;
     }
 
+    public boolean isMatchingPassword(String password) {
+        return encoder.matches(password, pwHash);
+    }
     public Integer getPhoneNumber() {
         return phoneNumber;
     }
@@ -67,8 +82,6 @@ public class User extends AbstractBaseClass {
         return email;
     }
 
-
-    //public String getPassword() {return password;}
 
 
     public String getFirstName() {
@@ -91,4 +104,5 @@ public class User extends AbstractBaseClass {
     public Role getRole () {return this.role;}
 
     public void setRole(Role role) {this.role = role;}
+
 }

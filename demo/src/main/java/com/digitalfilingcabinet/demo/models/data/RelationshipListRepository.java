@@ -1,7 +1,7 @@
 package com.digitalfilingcabinet.demo.models.data;
 
 import com.digitalfilingcabinet.demo.models.Relationship;
-import com.digitalfilingcabinet.demo.models.Role;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

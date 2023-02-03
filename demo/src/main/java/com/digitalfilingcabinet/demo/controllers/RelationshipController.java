@@ -6,6 +6,9 @@ import com.digitalfilingcabinet.demo.models.data.UserListRepository;
 
 import java.util.Optional;
 
+//need to code for delete relationship
+//should this be its own controller relationshipeditorcontroller with conditional that only role=admin ||role=editor
+//can access or do we contain this within this controller?
 @Controller
 @RequestMapping("relationships")
 public class RelationshipController {
@@ -16,7 +19,7 @@ public class RelationshipController {
     @Autowired
     private UserListRepository userListRepository;
 
-    @GetMapping(""
+    @GetMapping("")
     public String index(Model model) {
         model.addAttribute("relationships", relationshipRepository.findAll());
         return "relationships/index";
