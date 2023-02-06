@@ -1,7 +1,10 @@
 package com.digitalfilingcabinet.demo.models.dto;
 
 
+import com.digitalfilingcabinet.demo.models.Relationship;
 import com.digitalfilingcabinet.demo.models.User;
+
+import javax.validation.constraints.NotNull;
 
 public class UserRelationshipDTO {
 
