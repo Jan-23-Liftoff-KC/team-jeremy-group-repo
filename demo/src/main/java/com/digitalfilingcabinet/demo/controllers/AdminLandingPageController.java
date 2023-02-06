@@ -67,7 +67,7 @@ public class AdminLandingPageController {
     }
 
     @PostMapping("addUser")
-    public String processAddCategoryForm(@ModelAttribute @Valid UserList newUser, Errors errors, Model model){
+    public String processAddUserForm(@ModelAttribute @Valid UserList newUser, Errors errors, Model model){
         if (errors.hasErrors()) {
             model.addAttribute("title", "title");
             return "addUser";
@@ -79,7 +79,7 @@ public class AdminLandingPageController {
     }
 
     @GetMapping("addRecord")
-    public String displayAddUserForm(Model model) {
+    public String displayAddRecordForm(Model model) {
         model.addAttribute("title", "title");
         model.addAttribute(new RecordsList());
 
@@ -87,7 +87,7 @@ public class AdminLandingPageController {
     }
 
     @PostMapping("addRecord")
-    public String processAddCategoryForm(@ModelAttribute @Valid RecordsList newRecord, Errors errors, Model model){
+    public String processAddRecordForm(@ModelAttribute @Valid RecordsList newRecord, Errors errors, Model model){
         if (errors.hasErrors()) {
             model.addAttribute("title", "title");
             return "addRecord";
