@@ -3,12 +3,12 @@
 <head th:replace="fragments :: head"></head>
 
 <body class="container  body-content">
-<h1 th:text="${'Relationship: ' + relationship.name}">Default Title</h1>
+<h1 th:text="${'Category: ' + category.name}">Default Title</h1>
 
 <nav th:replace="fragments :: page-header"></nav>
 
-<div class="skill-listing">
-    <p th:text="${'Name: ' + relationship.name}"></p>
+<div class="category-listing">
+    <p th:text="${'Name: ' + category.name}"></p>
 
 </div>
 </body>
