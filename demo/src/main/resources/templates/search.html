@@ -1,10 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
 </head>
 <body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div class="container body-content">
+
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+
+    <form th:action="@{/search/results}" method = "post">
+        <h2>Search by:</h2>
+
+        <p>
+            <span th:each="column : ${columns}">
+                <input
+                        type="radio"
+                        name="searchType"
+                        th:id="${column.key}"
+                        th:value="${column.key}"
+                        th:checked="${column.key == 'all'}"/>
+                <label th:for="${column.key}" th:text="${column.value}"></label>
+            </span>
+
+        </p>
+
+        <p>
+            <label for="searchTerm">Keyword:</label>
+            <input type="text" name="searchTerm" id="searchTerm" />
+        </p>
+
+        <input type="submit" value="Search" />
+    </form>
+
+    <hr />
+
+
+    <table class="user-listing">
+        <tr th:each="user : ${users}">
+            <td>
+                <p>
+                    User Id:
+                    <a th:href="@{'/view/' + ${user.id}}" th:text="${user.id}"></a>
+                </p>
+                <p th:text="${'User Name: ' + user.first_name + ' ' + user.last_name}"></p>
+
+                    Relationships:
+                <ul th:each="relationship : ${user.relationships}">
+                    <li>
+                        <a th:href="@{'/relationships/view/' + ${relationship.id}}" th:text="${relationship.name}"></a>
+                    </li>
+                </ul>
+                </p>
+
+            </td>
+        </tr>
+    </table>
+
+</div>
 
 </body>
 </html>

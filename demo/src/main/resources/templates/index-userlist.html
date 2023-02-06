@@ -4,14 +4,15 @@
 </head>
 <body>
 
-<!--fragments need to be set up.-->
 <div th:replace="fragments :: page-header"></div>
 
 <div class="container body-content">
-
-    <div class="UserList">
-
-    </div>
+    <h2>Users</h2>
+    <ul>
+        <li th:each="user : ${users}">
+            <a th:href="@{'/view/' + ${user.id}}" th:text="${user.name}"></a>
+        </li>
+    </ul>
 
 </div>
 
