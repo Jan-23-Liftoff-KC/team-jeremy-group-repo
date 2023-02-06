@@ -1,12 +1,50 @@
 package com.digitalfilingcabinet.demo.models;
 
-public abstract class AbstractBaseClass {
-    // AbstractBaseClass needs to have the things like, generating a new ID
-    // when one of the other classes is created
-    // theres probly other things that are for EVERY single class, we will add them here
-    // so the other classes can just extend this one.
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.util.Objects;
 
-    // the other model classes create tables for the MySQL stuff. but this one doesnt.
+@MappedSuperclass
+public abstract class AbstractBaseClass {
+
+    @Id
+    @GeneratedValue
+    private int id;
+
+    //should name be at the abstract class or just on the user, relationship, and categorydata classes?
+
+    @Column(unique = true)
+    @NotBlank(message="Please provide a name for this.")
+    @Size(min= 3, max = 100, message = "Name must be between 3 and 100 characters.")
+    private String name;
+
+
+    // to check if names are identical, we need to use a Derived Query Method
+
+
+
+
+    public int getId() {
+        return id;
+    }
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AbstractBaseClass that = (AbstractBaseClass) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
 
 }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<p th:unless="${users} and ${users.size()}">no users</p>
+
+<div class="container body-content">
+    <h2>User</h2>
+    <ul>
+        <li th:each="user : ${users}">
+            <a th:href="@{'/users/view/' + ${user.id}}" th:text="${user.name}"></a>
+        </li>
+
+    </ul>
+    <a th:href="@{'/users/add'}">Add Users</a>
+
+</div>
+
+</body>
+</html>
