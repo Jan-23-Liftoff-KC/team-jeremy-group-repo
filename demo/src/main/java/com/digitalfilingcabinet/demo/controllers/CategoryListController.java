@@ -54,4 +54,6 @@ public class CategoryListController {
     // that's probably a 'parking lot' idea, we can start with this simply rendering the
     // full category list.
 
+    //do we need a category editor controller that has a conditional that only role= admin || editor can access or
+    //should that be included within this controller?
 
