@@ -61,7 +61,7 @@
                         <div class="row mb-3">
                             <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
                             <div class="col-sm-10">
-                                <input class="form-control" placeholder="Password" id="inputFirstName" th:field="${user.first_name}" />
+                                <input class="form-control" placeholder="First Name" id="inputFirstName" th:field="${user.first_name}" />
                                 <span th:errors="${user.first_name}" class="error"></span>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                         <div class="row mb-3">
                             <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
                             <div class="col-sm-10">
-                                <input class="form-control" placeholder="Password" id="inputLastName" th:field="${user.last_name}" />
+                                <input class="form-control" placeholder="Last Name" id="inputLastName" th:field="${user.last_name}" />
                                 <span th:errors="${user.last_name}" class="error"></span>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
                         <div class="row mb-3">
                             <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-10">
-                                <input class="form-control" placeholder="Password" id="inputEmail" th:field="${user.email}" />
+                                <input class="form-control" placeholder="Email" id="inputEmail" th:field="${user.email}" />
                                 <span th:errors="${user.email}" class="error"></span>
                             </div>
                         </div>
@@ -85,37 +85,47 @@
                         <div class="row mb-3">
                             <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Phone Number</label>
                             <div class="col-sm-10">
-                                <input class="form-control" placeholder="Password" id="inputPhoneNumber" th:field="${user.phone}" />
+                                <input class="form-control" placeholder="Phone Number" id="inputPhoneNumber" th:field="${user.phone}" />
                                 <span th:errors="${user.phone}" class="error"></span>
                             </div>
                         </div>
 <!--                        permissions-->
                         <fieldset class="row mb-3">
-                            <legend class="col-form-label col-sm-2 pt-0">Permission Level</legend>
+                            <label th:for="role">Permission Levels </label>
+
+<!--                            <legend class="col-form-label col-sm-2 pt-0">Permission Levels</legend>-->
+
                             <div class="col-sm-10">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                                    <label class="form-check-label" for="gridRadios1">
-                                        Permission Level 1
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="admin" value="admin" checked>
+                                    <label class="form-check-label" for="admin">
+                                        Admin
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                    <label class="form-check-label" for="gridRadios2">
-                                        Permission Level 2
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="editor" value="editor">
+                                    <label class="form-check-label" for="Editor">
+                                        Editor
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                    <label class="form-check-label" for="gridRadios2">
-                                        Permission Level 3
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="viewer" value="viewer">
+                                    <label class="form-check-label" for="viewer">
+                                        Viewer
                                     </label>
                                 </div>
                             </div>
+
+
+
+<!--                            <a th:href="@{'/role/add'}">Add Role</a>-->
                         </fieldset>
 
-                        <button type="submit" class="btn btn-primary">Create User</button>
+                        <a th:href="@{'/role/add'}"><button type="submit" class="btn btn-primary">Create User</button></a>
                     </form>
+
+
+
 
 
                 </div>
