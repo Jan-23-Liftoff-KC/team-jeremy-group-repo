@@ -5,9 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 import javax.validation.contraints.*;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 //@Table //should this be a table or list?  How do we have several unique keys if it is in a list?
@@ -52,7 +50,7 @@ public class User extends AbstractBaseClass {
    // @Column(name = "relationship", nullable = false, )
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-    public User(){};
+    public User(String username, String password){};
     public User (String username, String password, String firstName, String lastName, Integer phoneNumber, String email, String password, Role role, List <Relationship> relationships) {
         super();
         this.username = username;

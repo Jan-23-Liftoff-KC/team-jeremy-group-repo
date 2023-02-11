@@ -3,14 +3,19 @@ package com.digitalfilingcabinet.demo.controllers;
 import com.digitalfilingcabinet.demo.models.User;
 import com.digitalfilingcabinet.demo.models.data.UserRepository;
 import com.digitalfilingcabinet.demo.models.dto.RegisterFormDTO;
-import javax.servlet.http;
+import javax.servlet.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Optional;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 //This code allows us to store and retrieve the login status of a user in a session. More specifically, a logged-in
@@ -76,9 +81,9 @@ public class _AuthenticationController {
             return "register";
         }
 
-        User newUser = new User((registerFormDTO.getUsername(), registerFormDTO.getPassword()));
+        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
         userRepository.save(newUser);
-        setUserInSession((request.getSession), newUser);
+        setUserInSession((request.getSession()), newUser);
 
         return "redirect:";
     }

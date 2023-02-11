@@ -2,7 +2,6 @@ package com.digitalfilingcabinet.demo.controllers;
 
 
 import com.digitalfilingcabinet.demo.models.data.*;
-import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -11,7 +10,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import com.digitalfilingcabinet.demo.models.*;
-import com.digitalfilingcabinet.demo.models.data.*;
 
 import javax.validation.Valid;
 
@@ -43,7 +41,7 @@ public class AdminLandingPageController {
     @GetMapping("adduser")
     public String displayAddUserForm(Model model) {
         model.addAttribute("title", "Add User");
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new User(registerFormDTO.getUsername(), registerFormDTO.getPassword()));
         return "admin/add";
     }
 
