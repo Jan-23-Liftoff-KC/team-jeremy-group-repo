@@ -3,7 +3,7 @@ package com.digitalfilingcabinet.demo.controllers;
 import com.digitalfilingcabinet.demo.models.User;
 import com.digitalfilingcabinet.demo.models.data.UserRepository;
 import com.digitalfilingcabinet.demo.models.dto.RegisterFormDTO;
-import.javax.servlet.http;
+import javax.servlet.http;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,14 +1,14 @@
 package com.digitalfilingcabinet.demo.controllers;
 
 import com.digitalfilingcabinet.demo.models.dto.LoginFormDTO;
-import.javax.servlet.http;
-
+import javax.servlet.http;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 //this allows a user to login
 public class HomeController {
 
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+
 
 //this allows a user to login
 
