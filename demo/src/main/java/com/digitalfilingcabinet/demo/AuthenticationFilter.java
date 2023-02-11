@@ -1,6 +1,6 @@
 package com.digitalfilingcabinet.demo;
 
-import com.digitalfilingcabinet.demo.controllers.AuthenticationController;
+import com.digitalfilingcabinet.demo.controllers._AuthenticationController;
 import com.digitalfilingcabinet.demo.models.User;
 import com.digitalfilingcabinet.demo.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
     UserRepository userRepository;
 
     @Autowired
-    AuthenticationController authenticationController;
+    _AuthenticationController authenticationController;
 
     private static final List<String> whitelist = Arrays.asList("/login", "/register", "/logout", "/css");
 

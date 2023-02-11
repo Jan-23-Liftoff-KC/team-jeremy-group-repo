@@ -6,8 +6,6 @@ import com.digitalfilingcabinet.demo.models.dto.RegisterFormDTO;
 import javax.servlet.http;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +19,7 @@ import javax.validation.Valid;
 //temp pw?
 
 @Controller
-public class AuthenticationController {
+public class _AuthenticationController {
 
 
     @Autowired

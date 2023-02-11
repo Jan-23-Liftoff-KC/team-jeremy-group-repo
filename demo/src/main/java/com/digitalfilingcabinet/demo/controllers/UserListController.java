@@ -1,9 +1,7 @@
 package com.digitalfilingcabinet.demo.controllers;
 
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+import com.digitalfilingcabinet.demo.models.UserList;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,9 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Optional;
-
-=======
->>>>>>> 03d95b6758675711249db435258ed1c113837c70
 import com.digitalfilingcabinet.demo.models.User;
 import com.digitalfilingcabinet.demo.models.data.UserListRepository;
 import com.digitalfilingcabinet.demo.models.data.RoleListRepository;
@@ -34,19 +29,21 @@ import java.util.Optional;
 //this controller allows users to be viewed and searched by different criteria.
 
 
-<<<<<<< HEAD
-=======
->>>>>>> dev
->>>>>>> 03d95b6758675711249db435258ed1c113837c70
+
 @Controller
 @RequestMapping("users")
 public class UserListController {
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
     @Autowired
     private UserListRepository userListRepository;
+
+
+    @Autowired
+    private RoleListRepository roleListRepository;
+
+    @Autowired
+    private RelationshipListRepository relationshipListRepository;
+
 
     @GetMapping("")
     private String index(Model model){
@@ -83,45 +80,6 @@ public class UserListController {
             return "redirect:../";
         }
     }
-=======
->>>>>>> 03d95b6758675711249db435258ed1c113837c70
-   @Autowired
-   private UserListRepository userListRepository;
-
-  @Autowired
-   private RoleListRepository roleListRepository;
-
-  @Autowired
-<<<<<<< HEAD
-  private RelationshipListRepository relationshipListRepository;
-=======
-  private RelationshipRepository relationshipRepository;
->>>>>>> 03d95b6758675711249db435258ed1c113837c70
-
-    @GetMapping("")
-    public String index(Model model) {
-
-        model.addAttribute("user", userListRepository.findAll());
-        return "users/index";
-    }
 
 
-    @GetMapping("view/{userId}")
-    public String displayViewUser(Model model, @PathVariable int userId) {
-
-        Optional optUser = userListRepository.findById(userId);
-        if (optUser.isPresent()) {
-            User user = (User) optUser.get();
-            model.addAttribute("user", user);
-            return "users/view";
-        } else {
-            return "redirect:../";
-
-        }
-    }
-
-<<<<<<< HEAD
-=======
->>>>>>> dev
->>>>>>> 03d95b6758675711249db435258ed1c113837c70
 }

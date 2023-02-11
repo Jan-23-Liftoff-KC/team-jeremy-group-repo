@@ -24,15 +24,15 @@ public class HomeController {
         @GetMapping("/login")
         public String displayLoginForm(Model model) {
             model.addAttribute(new LoginFormDTO());
-            mode.addAttribute("title", "Log In");
+            model.addAttribute("title", "Log In");
             return "login";
         }
 
         @PostMapping("/login")
         public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO, Errors errors, HttpServletRequest request, Model model) {
-            if (erros.hasErrors()) {
+            if (errors.hasErrors()) {
                 model.addAttribute("title", "Log In");
-                return login;
+                return "login";
             }
 
             User theUser = userRepository.findByUsername(loginFormDTO.getUsername());
