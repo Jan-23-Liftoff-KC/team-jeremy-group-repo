@@ -45,14 +45,17 @@
                         <div class="row mb-3">
                             <label for="inputEmail3" class="col-sm-2 col-form-label">User Name</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" placeholder="Username / Email"  id="inputEmail3">
+                                <input class="form-control" placeholder="Username / Email" id="inputEmail3" th:field="${user.first_name}" />
+                                <span th:errors="${user.first_name}" class="error"></span>
+<!--                                <input type="email" class="form-control" placeholder="Username / Email"  id="inputEmail3">-->
                             </div>
                         </div>
 <!--                        password field-->
                         <div class="row mb-3">
                             <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
                             <div class="col-sm-10">
-                                <input type="password" class="form-control" placeholder="Password"  id="inputPassword3">
+                                <input class="form-control" placeholder="Username / Email" th:field="${user.first_name}" />
+                                <span th:errors="${user.first_name}" class="error"></span>
                             </div>
                         </div>
 <!--                        first name field-->

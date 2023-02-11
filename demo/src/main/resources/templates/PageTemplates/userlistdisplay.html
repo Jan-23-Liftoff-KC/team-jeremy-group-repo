@@ -37,15 +37,39 @@
 <div class="card" style="width: 18rem;">
   <ul class="list-group list-group-flush">
     <li class="list-group-item">
-      USER INFO
+
+      <div class="user-listing">
+        <p th:text="${'First Name: ' + user.first_name}"></p>
+        first name
+        <p th:text="${'Last Name: ' + user.last_name}"></p>
+        last name
+        <p th:text="${'Email: ' + user.email}"></p>
+        email
+        <p th:text="${'Phone: ' + user.phone}"></p>
+        .
+        <p th:text="${'Relationship: ' + user.relationship}"></p>
+        .
+        <p th:text="${'Role: ' + user.role}"></p>
+      </div>
+
     </li>
     <li class="list-group-item">
-      USER INFO
+
+      <div class="user-listing">
+        <p th:text="${'First Name: ' + user.first_name}"></p>
+        first name
+        <p th:text="${'Last Name: ' + user.last_name}"></p>
+        last name
+        <p th:text="${'Email: ' + user.email}"></p>
+        email
+        <p th:text="${'Phone: ' + user.phone}"></p>
+        .
+        <p th:text="${'Relationship: ' + user.relationship}"></p>
+        .
+        <p th:text="${'Role: ' + user.role}"></p>
+      </div>
+
     </li>
-    <li class="list-group-item"><b>Larry Smith</b><br><br>these get bigger<br>if you want to put more<br>stuff inside.</li>
-    <li class="list-group-item">USER INFO</li>
-    <li class="list-group-item">USER INFO</li>
-    <li class="list-group-item">USER INFO</li>
   </ul>
 </div>
 
