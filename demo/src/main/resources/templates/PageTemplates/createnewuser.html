@@ -1,4 +1,11 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src=https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+
 
 <div class="container py-2">
     <div class="row">
@@ -45,10 +52,11 @@
                         <div class="row mb-3">
                             <label for="inputUserName" class="col-sm-2 col-form-label">User Name</label>
                             <div class="col-sm-10">
-                                <input class="form-control" placeholder="Username / Email" id="inputUserName" th:field="${user.username}" />
+                                <input class="form-control" placeholder="Username" id="inputUserName" th:field="${user.username}" />
                                 <span th:errors="${user.first_name}" class="error"></span>
                             </div>
                         </div>
+
 <!--                        password field-->
                         <div class="row mb-3">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
@@ -57,6 +65,7 @@
                                 <span th:errors="${user.password}" class="error"></span>
                             </div>
                         </div>
+
 <!--                        first name field-->
                         <div class="row mb-3">
                             <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
@@ -65,6 +74,7 @@
                                 <span th:errors="${user.first_name}" class="error"></span>
                             </div>
                         </div>
+
 <!--                        last name field-->
                         <div class="row mb-3">
                             <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
@@ -73,7 +83,8 @@
                                 <span th:errors="${user.last_name}" class="error"></span>
                             </div>
                         </div>
-<!--                        phone field-->
+
+<!--                        email field-->
                         <div class="row mb-3">
                             <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-10">
@@ -81,7 +92,8 @@
                                 <span th:errors="${user.email}" class="error"></span>
                             </div>
                         </div>
-<!--                        email field-->
+
+<!--                        phone field-->
                         <div class="row mb-3">
                             <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Phone Number</label>
                             <div class="col-sm-10">
@@ -89,12 +101,11 @@
                                 <span th:errors="${user.phone}" class="error"></span>
                             </div>
                         </div>
+
 <!--                        permissions-->
                         <fieldset class="row mb-3">
                             <label th:for="role">Permission Levels </label>
-
 <!--                            <legend class="col-form-label col-sm-2 pt-0">Permission Levels</legend>-->
-
                             <div class="col-sm-10">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="gridRadios" id="admin" value="admin" checked>
@@ -116,8 +127,6 @@
                                 </div>
                             </div>
 
-
-
 <!--                            <a th:href="@{'/role/add'}">Add Role</a>-->
                         </fieldset>
 
@@ -132,9 +141,5 @@
             </div>
 </div>
 
-
-
-
-
-
-
+</body>
+</html>

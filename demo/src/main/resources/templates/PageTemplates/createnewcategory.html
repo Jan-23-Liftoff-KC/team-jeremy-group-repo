@@ -1,4 +1,11 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src=https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+
 
 <div class="container py-2">
   <div class="row">
@@ -42,41 +49,42 @@
 
 <!--          category name field-->
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Create a New Category</label>
-            <br>
-            <input class="form-control form-control-sm" type="text" placeholder="Larry Smith Contact Info / Prescriptions List / Power of Attorney" aria-label=".form-control-sm example">
-          </div>
+            <label for="inputCategoryName" class="col-sm-2 col-form-label">Category Name</label>
+            <div class="col-sm-10">
+              <input class="form-control" placeholder="Category Name" id="inputCategoryName" th:field="${category.name}" />
+              <span th:errors="${category.name}" class="error"></span>
+            </div>
 
 <!--          additional info field-->
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Enter Additional Information. Contact Info. etc.</label>
-            <textarea class="form-control" placeholder="PoA Name, cellphone, birthday of your dog." id="exampleFormControlTextarea1" rows="5"></textarea>
-          </div>
+            <div class="mb-3">
+              <label for="inputCategoryDescription" class="form-label">Enter Additional Information. Contact Info. etc.</label>
+              <textarea class="form-control" placeholder="PoA Name, cellphone, birthday of your dog." id="inputCategoryDescription" rows="5" th:field="${category.description}">
+                        </textarea>
+            </div>
 
 <!--          permission level buttons-->
-          <fieldset class="row mb-3">
-            <legend class="col-form-label col-sm-2 pt-0">Permission Level</legend>
-            <div class="col-sm-10">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                <label class="form-check-label" for="gridRadios1">
-                  Permission Level 1
-                </label>
+            <fieldset class="row mb-3">
+              <div class="col-sm-10">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="admin" value="admin" checked>
+                  <label class="form-check-label" for="admin">
+                    Admin
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="editor" value="editor">
+                  <label class="form-check-label" for="editor">
+                    Editor
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="viewer" value="viewer">
+                  <label class="form-check-label" for="viewer">
+                    Viewer
+                  </label>
+                </div>
               </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                <label class="form-check-label" for="gridRadios2">
-                  Permission Level 2
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                <label class="form-check-label" for="gridRadios2">
-                  Permission Level 3
-                </label>
-              </div>
-            </div>
-          </fieldset>
+            </fieldset>
 
 <!--          upload file button-->
           <div class="mb-3">
@@ -95,10 +103,5 @@
 
     </div>
   </div>
-
-
-
-
-
-
-
+</body>
+</html>

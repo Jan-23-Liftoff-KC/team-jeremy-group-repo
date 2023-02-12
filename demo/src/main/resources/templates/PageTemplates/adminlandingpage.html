@@ -1,4 +1,10 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src=https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
 
 <div class="container py-2">
     <div class="row">
@@ -27,7 +33,7 @@
 </ul>
 
 <br>
-
+<!--    title-->
 <div class="container py-2">
     <div class="row">
         <div class="col">
@@ -41,6 +47,7 @@
 
 
 <div class="row">
+<!--    create new user-->
     <div class="col-sm-5">
         <div class="card">
             <img src="..." class="card-img-top" alt="...">
@@ -53,7 +60,7 @@
                     <div class="row mb-3">
                         <label for="inputUserName" class="col-sm-2 col-form-label">User Name</label>
                         <div class="col-sm-10">
-                            <input class="form-control" placeholder="Username / Email" id="inputUserName" th:field="${user.username}" />
+                            <input class="form-control" placeholder="Username" id="inputUserName" th:field="${user.username}" />
                             <span th:errors="${user.first_name}" class="error"></span>
                         </div>
                     </div>
@@ -67,6 +74,7 @@
                     </div>
                     <!--                        first name field-->
                     <div class="row mb-3">
+                        <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
                         <div class="col-sm-10">
                             <input class="form-control" placeholder="First Name" id="inputFirstName" th:field="${user.first_name}" />
                             <span th:errors="${user.first_name}" class="error"></span>
@@ -74,6 +82,7 @@
                     </div>
                     <!--                        last name field-->
                     <div class="row mb-3">
+                    <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
                         <div class="col-sm-10">
                             <input class="form-control" placeholder="Last Name" id="inputLastName" th:field="${user.last_name}" />
                             <span th:errors="${user.last_name}" class="error"></span>
@@ -81,101 +90,118 @@
                     </div>
                     <!--                        phone field-->
                     <div class="row mb-3">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">Phone</label>
+                        <label for="inputPhoneNumber" class="col-sm-2 col-form-label">Phone Number</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" placeholder="Phone"  id="inputPassword3">
+                            <input class="form-control" placeholder="Phone Number" id="inputPhoneNumber" th:field="${user.phone}" />
+                            <span th:errors="${user.phone}" class="error"></span>
                         </div>
                     </div>
                     <!--                        email field-->
                     <div class="row mb-3">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">E-mail</label>
+                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" placeholder="E-mail"  id="inputPassword3">
+                            <input class="form-control" placeholder="Email" id="inputEmail" th:field="${user.email}" />
+                            <span th:errors="${user.email}" class="error"></span>
                         </div>
                     </div>
+
+
                     <!--                        permissions-->
                     <fieldset class="row mb-3">
-                        <legend class="col-form-label col-sm-2 pt-0">Permission Level</legend>
+                        <label th:for="role">Permission Levels </label>
                         <div class="col-sm-10">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                                <label class="form-check-label" for="gridRadios1">
-                                    Permission Level 1
+                                <input class="form-check-input" type="radio" name="gridRadios" id="admin" value="admin" checked>
+                                <label class="form-check-label" for="admin">
+                                    Admin
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                <label class="form-check-label" for="gridRadios2">
-                                    Permission Level 2
+                                <input class="form-check-input" type="radio" name="gridRadios" id="editor" value="editor">
+                                <label class="form-check-label" for="Editor">
+                                    Editor
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                <label class="form-check-label" for="gridRadios2">
-                                    Permission Level 3
+                                <input class="form-check-input" type="radio" name="gridRadios" id="viewer" value="viewer">
+                                <label class="form-check-label" for="viewer">
+                                    Viewer
                                 </label>
                             </div>
                         </div>
                     </fieldset>
-
-                    <button type="submit" class="btn btn-primary">Create User</button>
+<!--                                        submit button href probably incorrect.-->
+                    <a th:href="@{'/role/add'}"><button type="submit" class="btn btn-primary">Create User</button></a>
                 </form>
 
             </div>
         </div>
     </div>
 
+
+<!--create new category-->
     <div class="col-sm-5">
         <div class="card">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
+
                 <div class="card-body">
                     <h5 class="card-title">Create a New Category</h5>
                 </div>
+
                 <form>
+<!--                    input category name-->
                     <div class="row mb-3">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Category Name</label>
+                        <label for="inputCategoryName" class="col-sm-2 col-form-label">Category Name</label>
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" placeholder="Category Name"  id="inputEmail3">
+                            <input class="form-control" placeholder="Category Name" id="inputCategoryName" th:field="${category.name}" />
+                            <span th:errors="${category.name}" class="error"></span>
                         </div>
                     </div>
+<!--                    input category description/info-->
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Enter Additional Information. Contact Info. etc.</label>
-                        <textarea class="form-control" placeholder="PoA Name, cellphone, birthday of your dog." id="exampleFormControlTextarea1" rows="5"></textarea>
+                        <label for="inputCategoryDescription" class="form-label">Enter Additional Information. Contact Info. etc.</label>
+                        <textarea class="form-control" placeholder="PoA Name, cellphone, birthday of your dog." id="inputCategoryDescription" rows="5" th:field="${category.description}">
+                        </textarea>
                     </div>
-                                                    <fieldset class="row mb-3">
-                                                        <legend class="col-form-label col-sm-2 pt-0">Permission Level</legend>
-                                                        <div class="col-sm-10">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                                                                <label class="form-check-label" for="gridRadios1">
-                                                                    Permission Level 1
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                                                <label class="form-check-label" for="gridRadios2">
-                                                                    Permission Level 2
-                                                                </label>
-                                                            </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                                                <label class="form-check-label" for="gridRadios2">
-                                                                    Permission Level 3
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </fieldset>
-                                                    <div class="mb-3">
-                                                        <label for="formFileMultiple" class="form-label">Upload File (optional)</label>
-                                                        <input class="form-control" type="file" id="formFileMultiple" multiple>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <button type="submit" class="btn btn-primary mb-3">Submit New Category.</button>
-                                                    </div>
-            </div>
+<!--                    permissions incomplete-->
+                    <fieldset class="row mb-3">
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="admin2" value="admin2" checked>
+                                <label class="form-check-label" for="admin2">
+                                    Admin
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="editor2" value="editor2">
+                                <label class="form-check-label" for="editor2">
+                                    Editor
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="viewer2" value="viewer2">
+                                <label class="form-check-label" for="viewer2">
+                                    Viewer
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+<!--                    upload file thing incomplete-->
+                    <div class="mb-3">
+                        <label for="formFileMultiple" class="form-label">Upload File (optional)</label>
+                        <input class="form-control" type="file" id="formFileMultiple" multiple>
+                    </div>
+<!--                    submit button, not linked-->
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-3">Submit New Category.</button>
+                    </div>
+                </form>
+        </div>
         </div>
 
 </div>
 
 </div>
+</body>
+</html>

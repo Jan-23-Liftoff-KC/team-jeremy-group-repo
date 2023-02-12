@@ -4,6 +4,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.contraints.*;
 import java.util.HashSet;
 import java.util.List;
