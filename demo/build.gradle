@@ -26,6 +26,7 @@ dependencies {
 	implementation 'mysql:mysql-connector-java'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.security:spring-security-crypto'
+	implementation 'org.springframework.data:spring-data-commons-fileupload'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
