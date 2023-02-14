@@ -53,7 +53,7 @@ public class _AuthenticationController {
         return user.get();
     }
 
-    private static void setUserInSession(HttpSession session, User user) {
+    public static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
     }
 
