@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+<!--Required to change size of content depending on size of screen.-->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--Bootstrap required link.-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+    <body>
+
+<!--fragments need to be set up.-->
+        <div th:replace="fragments :: page-header"></div>
+
+        <div class="d-flex align-items-start">
+<!--All the tabs will be populated here.-->
+            <ul class="nav flex-column nav-pills me-3" id="tabs" role="tablist" aria-orientation="vertical">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="pill" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                </li>
+<!--Could add/remove categories based on the role of the user.-->
+<!--            <div th:switch="${user.role}">
+                    <p th:case="'admin'">User is an administrator</p>
+                    <p th:case="#{roles.manager}">User is a manager</p>
+                    <p th:case="*">User is some other thing</p>
+                </div>                                                      -->
+                <li th:each="category : ${Categories}" class="nav-item" role="presentation">
+                    <button class="nav-link" th:id="${category.name}-tab" data-bs-toggle="pill" th:data-bs-target="#${category.name}" type="button" role="tab" th:aria-controls="${category.name}" aria-selected="false" th:text="${category.name}"></button>
+                </li>
+                <li class="nav-item" role="presentation">
+<!--Remove line if we want create category here.-->
+                    <a class="nav-link" href="../PageTemplates/createnewcategory.html" style="font-size: 20px;">+</a>
+<!--Add line if we want create category here.-->
+<!--                <button class="nav-link" id="create-category-tab" data-bs-toggle="pill" data-bs-target="#create-category" type="button" role="tab" aria-controls="create-category" aria-selected="false" style="font-size: 20px;">+</button>-->
+                </li>
+            </ul>
+<!--The content displayed in each tab will be here.-->
+            <div class="tab-content">
+                <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab" tabindex="0"></div>
+                <div th:each="category : ${Categories}">
+                    <div class="tab-pane" th:id="${category.name}" role="tabpanel" th:aria-labelledby="${category.name}-tab" tabindex="0">
+<!--Everything inside this div should have all the content we want displayed in each category.-->
+                        <h2 th:text="${category.name}"></h2>
+                        <p th:text="${category.description}"></p>
+                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                            <div th:switch="${record.type}">
+                                <div th:case="'Contact'">
+                                    <div class="col" th:each="record : ${category.records}">
+                                        <div class="card h-100">
+                                            <img src="" class="card-img-top" alt=""> <!--Need to add a src for image-->
+                                            <div class="card-body">
+                                                <h5 class="card-title" th:text="${record.name}"></h5>
+                                                <h6 class="card-subtitle mb-2 text-muted" th:text="${record.jobTitle}"></h6>
+                                                <p class="card-text" th:text="${record.description}"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card text-center h-100">
+                                            <div class="card-body">
+                                                <a href="@{/add/record}" class="btn btn-outline-info btn-lg">+</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div th:case="'Text'">
+                                    <div class="col" th:each="record : ${category.records}">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h5 class="card-title" th:text="${record.name}"></h5>
+                                                <p class="card-text">Text to discribe person.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card text-center h-100">
+                                            <div class="card-body">
+                                                <a href="@{/add/record}" class="btn btn-outline-info btn-lg">+</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div th:case="'File'">
+                                    <div class="col" th:each="record : ${category.records}">
+                                        <div class="card h-100">
+                                            <img src="" class="card-img-top" alt=""> <!---->
+                                            <div class="card-body">
+                                                <h5 class="card-title" th:text="${record.name}"></h5>
+                                                <p class="card-text">Text to discribe person.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="card text-center h-100">
+                                            <div class="card-body">
+                                                <a href="@{/add/record}" class="btn btn-outline-info btn-lg">+</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--Add line if we want to create category here.-->
+<!--            <div class="tab-pane" id="create-category" role="tabpanel" aria-labelledby="create-category-tab" tabindex="0"></div>-->
+            </div>
+        </div>
+
+<!--Bootstrap required link, must stay at the bottom of the body.-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    </body>
+</html>

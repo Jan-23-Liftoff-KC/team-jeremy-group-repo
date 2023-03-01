@@ -14,6 +14,7 @@ import com.digitalfilingcabinet.demo.models.*;
 import com.digitalfilingcabinet.demo.models.data.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @Controller
@@ -32,7 +33,7 @@ public class AdminLandingPageController {
     private RoleListRepository roleListRepository;
 
     @Autowired
-    private RelationshipRepository relationshipRepository;
+    private RelationshipListRepository relationshipRepository;
 
     @GetMapping("")
     public String index(Model model) {

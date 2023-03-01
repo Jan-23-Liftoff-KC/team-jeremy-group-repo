@@ -16,7 +16,8 @@ public class RecordsList extends AbstractBaseClass {
         return null;
     }
 
-
+    @Size(min=3, max = 250, message = "Description must be between 3 and 250 characters.")
+    private String description;
 
 
 
